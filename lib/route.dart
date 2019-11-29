@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home.dart' as home;
 import 'other.dart' as other;
+import 'config.dart' as config;
 
 class Route extends StatelessWidget {
   Route({ Key key, this.content }) : super(key: key);
@@ -11,14 +12,19 @@ class Route extends StatelessWidget {
     return renderRoute(this.content);
   }
 }
-renderRoute (content) {
-  switch (content) {
-    case 'home':
-      return home.Home();
-      break;
-    case 'other':
-      return other.Other();
-      break;
-    default:
+
+Map getPage() {
+  Map page = {};
+  page.addAll(home.model);
+  page.addAll(other.model);
+  return page;
+}
+
+StatelessWidget renderRoute (content) {
+  var page = getPage();
+  if (page[content] == null) {
+    return Text('404');
+  } else {
+    return page[config.routeList[content].page](); // getpage(other, home);
   }
 }

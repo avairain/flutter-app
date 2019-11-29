@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'layout.dart' as _layout;
+import 'config.dart' as config;
 
 class App extends StatefulWidget {
   App({Key key, this.content}) : super(key: key);
@@ -14,7 +15,6 @@ class _App extends State {
   final String content;
   int index = 0;
   Widget build(BuildContext context) {
-    print(content);
     return Scaffold(
       appBar: AppBar(title: Text('app')),
       body: _layout.Main(content: this.getBody(index)),
@@ -52,12 +52,32 @@ class _App extends State {
       this.index = i;
     });
   }
+  mapBottom () {
+    List list= [];
+    config.routeList.forEach((String key, config.R value) {
+      var _i =  Icons as Map;
+      var r = null;
+      if (_i.containsKey(value.icon)) {
+        r = _i.putIfAbsent(value.icon, () => (1));
+      }
+      list.add(BottomNavigationBarItem(
+        icon: Icon(r),
+        title: Text(value.page),
+      ));
+    });
+  }
   String getBody(int i) {
-    switch (i) {
-      case 1:
-        return 'other';
-      case 0:
-        return 'home';
+    print(i);
+    config.R m = null;
+    config.routeList.forEach((String key, config.R value) {
+      if (value.index == i) {
+        m = value;
+      }
+    });
+    if (m != null) {
+      return m.page;
+    } else {
+      return '';
     }
   }
 }
