@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'home.dart' as home;
-import 'other.dart' as other;
-import 'config.dart' as config;
+import '../view/home.dart' as home;
+import '../view/other.dart' as other;
+import '../common/config.dart' as config;
 
 class Route extends StatelessWidget {
   Route({ Key key, this.content }) : super(key: key);

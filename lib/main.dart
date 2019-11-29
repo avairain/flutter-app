@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'app.dart';
+import 'src/app.dart';
 // import 'layout.dart' as _layout;
 
 void main() => runApp(MyApp());
@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
       // },
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => App(content: 'home'),
-        '/other': (BuildContext context) => App(content: 'other'),
       },
       theme: ThemeData(
         // This is the theme of your application.

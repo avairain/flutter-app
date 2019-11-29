@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'layout.dart' as _layout;
-import 'config.dart' as config;
+import 'mainbody.dart' as MainBody;
+import '../../common/config.dart' as config;
 
 class App extends StatefulWidget {
   App({Key key, this.content}) : super(key: key);
@@ -17,7 +17,7 @@ class _App extends State {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('app')),
-      body: _layout.Main(content: this.getBody(index)),
+      body: MainBody.Main(content: this.getBody(index)),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTap,
         currentIndex: index,
